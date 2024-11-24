@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import coding from "../assets/coding.jpg";
 import myIndia from "../assets/myIndia.jpeg";
+import website from "../assets/website.png";
 
 const projects = [
   {
@@ -46,6 +47,14 @@ const projects = [
     description: "Static Chat Bot",
     image: "https://via.placeholder.com/300",
     github: "",
+    liveDemo: "https://project-two-demo.com",
+  },
+  {
+    id: 5,
+    title: "Portfolio Website",
+    description: "Portfolio Website",
+    image: website,
+    github: "https://github.com/manglesh23/portfolio.git",
     liveDemo: "https://project-two-demo.com",
   },
 ];
