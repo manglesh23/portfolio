@@ -14,6 +14,8 @@ import {
 import coding from "../assets/coding.jpg";
 import myIndia from "../assets/myIndia.jpeg";
 import website from "../assets/website.png";
+import chatbot from "../assets/chatbot.png";
+import payment from "../assets/payment.jpg";
 
 const projects = [
   {
@@ -37,26 +39,27 @@ const projects = [
     id: 3,
     title: "Payment System",
     description: "Payment System integration Assignment, nock npm used",
-    image: myIndia,
+    image: payment,
     github: "https://github.com/manglesh23/myIndia",
     liveDemo: "https://project-two-demo.com",
   },
   {
     id: 4,
-    title: "Chat Bot",
-    description: "Static Chat Bot",
-    image: "https://via.placeholder.com/300",
-    github: "",
-    liveDemo: "https://project-two-demo.com",
-  },
-  {
-    id: 5,
     title: "Portfolio Website",
     description: "Portfolio Website",
     image: website,
     github: "https://github.com/manglesh23/portfolio.git",
     liveDemo: "https://project-two-demo.com",
   },
+  {
+    id: 5,
+    title: "Chat Bot",
+    description: "Static Chat Bot, In Developing Phase",
+    image: chatbot,
+    github: "",
+    liveDemo: "https://project-two-demo.com",
+  },
+ 
 ];
 
 const Projects = () => {

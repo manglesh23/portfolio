@@ -14,6 +14,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import axios from "axios";
 
 const Contact = () => {
@@ -47,16 +48,24 @@ const Contact = () => {
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-       let userLocation = await getLocation();
-       console.log("User Location:-",userLocation);
+      let userLocation = await getLocation();
+      console.log("User Location:-", userLocation);
       //---------------------------------------------------------------------------------
-      
-      let sendDetails = name + "-" + email + "-" + text+"-"+String(userLocation.latitude)+"/"+String(userLocation.longitude);
+
+      let sendDetails =
+        name +
+        "-" +
+        email +
+        "-" +
+        text +
+        "-" +
+        String(userLocation.latitude) +
+        "/" +
+        String(userLocation.longitude);
       const to = "8084377799";
       console.log("Details:-", sendDetails);
       const response = await axios.post("http://localhost:7000/sms/sendsms", {
@@ -151,6 +160,17 @@ const Contact = () => {
                 <Icon
                   as={FaGithub}
                   boxSize={6}
+                  _hover={{ color: "teal.400" }}
+                />
+              </Link>
+              <Link
+                href="mailto:mangleshyadav2@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SiGmail
+                  size={30}
+                  color="#D14836"
                   _hover={{ color: "teal.400" }}
                 />
               </Link>

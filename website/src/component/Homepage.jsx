@@ -67,6 +67,7 @@ function Homepage() {
           bgRepeat="no-repeat"
           color="white"
           bg="gray.900"
+          // backgroundColor="#001f3f"
 
           minH="90vh"
           display="flex"

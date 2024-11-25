@@ -123,82 +123,89 @@ const About = () => {
 
   return (
     <div>
-      <Box  bg="teal.500">
-      <Navbar />
-      <Flex
-        bg="gray.900"
-        minHeight="90vh"
-        p={8}
-        gap={6}
-        flexDirection={{ base: "column", md: "row" }}
-      >
-        <Box bg="gray.900" minHeight="90vh" py={8} px={4} flex="3">
-          <Stack
-            maxW="800px"
-            mx="auto"
-            spacing={8}
-            align="center"
-            textAlign="center"
-          >
-            {/* <Heading as="h1" size="xl" color="gray.100">
+      <Box bg="teal.500">
+        <Navbar />
+        <Flex
+          bg="gray.900"
+          minHeight="90vh"
+          p={8}
+          gap={6}
+          flexDirection={{ base: "column", md: "row" }}
+        >
+          <Box bg="gray.900" minHeight="90vh" py={8} px={4} flex="3">
+            <Stack
+              maxW="800px"
+              mx="auto"
+              spacing={8}
+              align="center"
+              textAlign="center"
+            >
+              {/* <Heading as="h1" size="xl" color="gray.100">
             About Me
           </Heading> */}
-            {/* <Image
+              {/* <Image
               borderRadius="full"
               boxSize="150px"
               src="https://via.placeholder.com/150"
               alt="Profile Picture"
               mb={4}
             /> */}
-            <Text fontSize="lg" color="gray.100" textAlign="justify">
-              I am an alumnus of IIT Dhanbad, one of India’s most prestigious
-              institutions. With professional experience at two innovative
-              start-ups, I have designed and developed scalable,
-              high-performance backend systems and architected robust solutions
-              to address complex challenges. My unwavering passion for
-              technology drives me to continuously upskill and embrace emerging
-              trends in the ever-evolving tech ecosystem. I am committed to
-              leveraging my expertise in software development, system design,
-              and problem-solving to deliver impactful, user-centric solutions
-              that drive organizational growth and innovation.
-            </Text>
-            {/* <Text fontSize="lg" color="gray.100">
+              <Text fontSize="lg" color="gray.100" textAlign="justify">
+                I am an alumnus of IIT Dhanbad, one of India’s most prestigious
+                institutions. With professional experience at two innovative
+                start-ups, I have designed and developed scalable,
+                high-performance backend systems and architected robust
+                solutions to address complex challenges. My unwavering passion
+                for technology drives me to continuously upskill and embrace
+                emerging trends in the ever-evolving tech ecosystem. I am
+                committed to leveraging my expertise in software development,
+                system design, and problem-solving to deliver impactful,
+                user-centric solutions that drive organizational growth and
+                innovation.
+              </Text>
+              {/* <Text fontSize="lg" color="gray.100">
             When I'm not coding, you can find me exploring new places, reading
             books, or experimenting with new recipes in the kitchen.
           </Text> */}
-            <Box>
-              {/* <Heading as="h2" size="lg" mb={4}>
+              <Box>
+                {/* <Heading as="h2" size="lg" mb={4}>
               My Skills
             </Heading> */}
-              <SimpleGrid columns={{ base: 2, sm: 3, md: 4 }} spacing={4}>
-                {skills.map((skill, index) => (
-                  <Badge
-                    key={index}
-                    px={4}
-                    py={2}
-                    bg="teal.500"
-                    color="white"
-                    borderRadius="md"
-                    fontSize="md"
-                    textAlign="center"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </SimpleGrid>
-            </Box>
+                <SimpleGrid columns={{ base: 2, sm: 3, md: 4 }} spacing={4}>
+                  {skills.map((skill, index) => (
+                    <Badge
+                      key={index}
+                      px={4}
+                      py={2}
+                      bg="teal.500"
+                      color="white"
+                      borderRadius="md"
+                      fontSize="md"
+                      textAlign="center"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </SimpleGrid>
+              </Box>
 
-            {/* <Button colorScheme="teal" size="lg" onClick={handleClick} margin={20}>
+              {/* <Button colorScheme="teal" size="lg" onClick={handleClick} margin={20}>
               Download CV
             </Button> */}
-
-          </Stack>
-          <SimpleGrid columns={{ base: 2, sm: 3, md: 4,size:"lg" }} spacing={4}><NPMPackage packages={npmPackages} /></SimpleGrid>
-        </Box>
-        {/* <Box flex="1" p={4} ml={3} bg="gray.900">
+            </Stack>
+            <Box margin={20}>
+              <SimpleGrid
+                columns={{ base: 2, sm: 3, md: 4, size: "lg" }}
+                spacing={4}
+              >
+                <NPMPackage packages={npmPackages} />
+              </SimpleGrid>
+            </Box>
+          </Box>
+          {/* <Box flex="1" p={4} ml={3} bg="gray.900">
           <NPMPackage packages={npmPackages} />
         </Box> */}
-      </Flex>
+        </Flex>
       </Box>
     </div>
   );
