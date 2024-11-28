@@ -12,6 +12,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import coding from "../assets/coding.jpg";
+import ChatBot from "../chatbot/chatbot";
 
 function Homepage() {
   const navigate = useNavigate();
@@ -58,6 +59,7 @@ function Homepage() {
         bgRepeat="no-repeat"
       >
         <Navbar />
+        <ChatBot/>
 
         <Box
           // bgImage="url('https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/5%20Best%20Coding%20Programs%20for%20Aspiring%20Programmers1650304687858345.jpg')"
