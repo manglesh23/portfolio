@@ -38,9 +38,9 @@ const projects = [
   {
     id: 3,
     title: "Payment System",
-    description: "Payment System integration Assignment, nock npm used",
+    description: "Payment System integration, Razorpay Integration",
     image: payment,
-    github: "https://github.com/manglesh23/myIndia",
+    github: "https://github.com/manglesh23/paymentSystem.git",
     liveDemo: "https://project-two-demo.com",
   },
   {
@@ -51,14 +51,14 @@ const projects = [
     github: "https://github.com/manglesh23/portfolio.git",
     liveDemo: "https://project-two-demo.com",
   },
-  {
-    id: 5,
-    title: "Chat Bot",
-    description: "Static Chat Bot, In Developing Phase",
-    image: chatbot,
-    github: "",
-    liveDemo: "https://project-two-demo.com",
-  },
+  // {
+  //   id: 5,
+  //   title: "Chat Bot",
+  //   description: "Static Chat Bot, In Developing Phase",
+  //   image: chatbot,
+  //   github: "",
+  //   liveDemo: "https://project-two-demo.com",
+  // },
  
 ];
 

@@ -1,9 +1,24 @@
 import React from "react";
-import { Box, Heading, Text, VStack, Link, SimpleGrid,Badge } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  VStack,
+  Link,
+  SimpleGrid,
+  Badge,
+} from "@chakra-ui/react";
 
 const NpmPackages = ({ packages }) => {
   return (
-    <Box bg="gray.900" boxShadow="md" borderRadius="md" p={2} w="100%" size="lg">
+    <Box
+      bg="gray.900"
+      boxShadow="md"
+      borderRadius="md"
+      p={2}
+      w="100%"
+      size="lg"
+    >
       <Heading as="h5" size="lg" mb={4} textAlign="center" color="white">
         NPM Packages Worked on
       </Heading>
@@ -20,15 +35,27 @@ const NpmPackages = ({ packages }) => {
             _hover={{ boxShadow: "lg" }}
             transition="box-shadow 0.2s"
           >
-            <Heading as="h4" size="sm" mb={4}>
-              {pkg.name}
-            </Heading>
-            <Text fontSize="sm" color="gray.600" mb={2}>
-              {pkg.description}
-            </Text>
-            <Link href={pkg.link} color="teal.500" isExternal>
-              View on NPM
-            </Link>
+            <Box
+              // bg="gray.800"
+              // p={4}
+              // rounded="lg"
+              // shadow="md"
+              // _hover={{
+              //   bg: "gray.100",
+              //   transform: "scale(1.05)",
+              //   transition: "all 0.2s ease-in-out",
+              // }}
+            >
+              <Heading as="h4" size="sm" mb={4}>
+                {pkg.name}
+              </Heading>
+              <Text fontSize="sm" color="gray.600" mb={2}>
+                {pkg.description}
+              </Text>
+              <Link href={pkg.link} color="teal.500" isExternal>
+                View on NPM
+              </Link>
+            </Box>
           </Badge>
         ))}
       </SimpleGrid>

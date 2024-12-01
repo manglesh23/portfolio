@@ -9,9 +9,13 @@ import {
   IconButton,
   useColorMode,
   useColorModeValue,
+  Avatar,
 } from "@chakra-ui/react";
+// import { Avatar } from "@/components/ui/avatar"
 import { FaPaperPlane, FaSun, FaMoon } from "react-icons/fa";
 import intents from "../helper/intent";
+import profileImage from "../assets/pic.jpeg";
+import chatbot from "../assets/chatbot.png";
 
 const ChatBot = () => {
   console.log("Intent:-", intents);
@@ -138,12 +142,13 @@ const ChatBot = () => {
         cursor="pointer"
         onClick={() => setIsChatOpen(!isChatOpen)}
       >
+        <Avatar name="GOLA" src={chatbot} />
         <Text
           fontSize="md"
           fontWeight="bold"
           display={isChatOpen ? "block" : "none"}
         >
-          GOLA AI
+          GOLA 
         </Text>
         <IconButton
           size="sm"
