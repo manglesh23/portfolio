@@ -11,12 +11,14 @@ import {
   HStack,
   Image,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import coding from "../assets/coding.jpg";
 import ChatBot from "../chatbot/chatbot";
 
 function Homepage() {
   const navigate = useNavigate();
   console.log("coding:-", coding);
+  const MotionBox = motion(Box);
   const handleClick = async () => {
     try {
       console.log("Download CV");
@@ -50,6 +52,27 @@ function Homepage() {
       console.log(error.message);
     }
   };
+
+  const containerVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay, duration: 0.8, ease: "easeOut" },
+    }),
+  };
+  
+  const containerVariantsY = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay, duration: 0.8, ease: "easeOut" },
+    }),
+  };
+
+
+
   return (
     <div>
       <Box
@@ -59,7 +82,7 @@ function Homepage() {
         bgRepeat="no-repeat"
       >
         <Navbar />
-        <ChatBot/>
+        <ChatBot />
 
         <Box
           // bgImage="url('https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/5%20Best%20Coding%20Programs%20for%20Aspiring%20Programmers1650304687858345.jpg')"
@@ -81,13 +104,41 @@ function Homepage() {
           {/* <Navbar /> */}
 
           <VStack spacing={6} textAlign="center">
-            <Heading size="3xl" fontWeight="bold">
-              Hi, I'm Manglesh Yadav
-            </Heading>
-            <Text fontSize="xl" maxW="600px">
-              I build scalable web applications and craft intuitive user
-              experiences.
-            </Text>
+            <MotionBox
+              bg="gray.800"
+              p={8}
+              rounded="md"
+              shadow="lg"
+              textAlign="center"
+              maxW="800px"
+              mx="auto"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              custom={0.3}
+            >
+              <Heading size="3xl" fontWeight="bold">
+                Hi, I'm Manglesh Yadav
+              </Heading>
+              <Text fontSize="xl" maxW="600px">
+                I build scalable web applications and craft intuitive user
+                experiences.
+              </Text>
+            </MotionBox>
+
+            <MotionBox
+              bg="gray.800"
+              p={8}
+              rounded="md"
+              shadow="lg"
+              textAlign="center"
+              maxW="800px"
+              mx="auto"
+              variants={containerVariantsY}
+              initial="hidden"
+              animate="visible"
+              custom={0.3}
+            >
             <HStack spacing={4}>
               <Button
                 colorScheme="teal"
@@ -106,9 +157,10 @@ function Homepage() {
                 Contact Me
               </Button>
               <Button colorScheme="teal" size="lg" onClick={handleClick}>
-              Download CV
-            </Button>
+                Download CV
+              </Button>
             </HStack>
+            </MotionBox>
           </VStack>
         </Box>
       </Box>
