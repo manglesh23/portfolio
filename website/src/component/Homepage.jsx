@@ -37,10 +37,10 @@ function Homepage() {
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
 
-      // Create a temporary anchor element to trigger the download
+      
       const link = document.createElement("a");
       link.href = url;
-      link.download = "Manglesh_Yadav_CV.pdf"; // Set the file name for download
+      link.download = "Manglesh_Yadav_CV.pdf"; 
       document.body.appendChild(link);
       link.click();
 

@@ -11,6 +11,7 @@ import {
   Link,
   Stack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import coding from "../assets/coding.jpg";
 import myIndia from "../assets/myIndia.jpeg";
 import website from "../assets/website.png";
@@ -59,10 +60,18 @@ const projects = [
   //   github: "",
   //   liveDemo: "https://project-two-demo.com",
   // },
- 
 ];
 
 const Projects = () => {
+  const MotionBox = motion(Box);
+  const containerVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay, duration: 0.8, ease: "easeOut" },
+    }),
+  };
   return (
     <div>
       <Box bg="teal.500">
@@ -71,61 +80,75 @@ const Projects = () => {
           {/* <Heading textAlign="center" mb={8}>
             My Projects
           </Heading> */}
-          <SimpleGrid columns={{ base: 1, md: 1, lg: 4 }} spacing={4}>
-            {projects.map((project) => (
-              <Box
-                key={project.id}
-                bg="white"
-                boxShadow="sm"
-                borderRadius="md"
-                overflow="hidden"
-                transition="transform 0.2s"
-                _hover={{ transform: "scale(1.05)" }}
-                maxWidth="300px" // Reduces the width of the card
-                height="380px" // Sets a fixed height
-                mx="auto" // Ce
-                position="relative"
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
-              >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  objectFit="cover"
-                  height="200px" // Restricts the height
-                  // width="100%"
-                  width="300px"
-                />
-                <Box p={4} flex="1">
-                  <Heading size="sm" mb={2}>
-                    {project.title}
-                  </Heading>
-                  <Text fontSize="sm" color="gray.600" mb={4} noOfLines={3}>
-                    {project.description}
-                  </Text>
-                  <Stack direction="row" spacing={4}>
-                    <Link href={project.github} isExternal>
-                      <Button
-                        colorScheme="teal"
-                        size="sm"
-                        position="absolute" // Position the button
-                        bottom="4px" // Space from the bottom
-                        left="4px" // Space from the left
-                      >
-                        GitHub
-                      </Button>
-                    </Link>
-                    {/* <Link href={project.liveDemo} isExternal>
+          <MotionBox
+            bg="gray.800"
+            p={8}
+            rounded="md"
+            shadow="lg"
+            textAlign="center"
+            maxW="1400px"
+            mx="auto"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            custom={0.3}
+          >
+            <SimpleGrid columns={{ base: 1, md: 1, lg: 4 }} spacing={4}>
+              {projects.map((project) => (
+                <Box
+                  key={project.id}
+                  bg="white"
+                  boxShadow="sm"
+                  borderRadius="md"
+                  overflow="hidden"
+                  transition="transform 0.2s"
+                  _hover={{ transform: "scale(1.05)" }}
+                  maxWidth="300px" // Reduces the width of the card
+                  height="380px" // Sets a fixed height
+                  mx="auto" // Ce
+                  position="relative"
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="space-between"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    objectFit="cover"
+                    height="200px" // Restricts the height
+                    // width="100%"
+                    width="300px"
+                  />
+                  <Box p={4} flex="1">
+                    <Heading size="sm" mb={2}>
+                      {project.title}
+                    </Heading>
+                    <Text fontSize="sm" color="gray.600" mb={4} noOfLines={3}>
+                      {project.description}
+                    </Text>
+                    <Stack direction="row" spacing={4}>
+                      <Link href={project.github} isExternal>
+                        <Button
+                          colorScheme="teal"
+                          size="sm"
+                          position="absolute" // Position the button
+                          bottom="4px" // Space from the bottom
+                          left="4px" // Space from the left
+                        >
+                          GitHub
+                        </Button>
+                      </Link>
+                      {/* <Link href={project.liveDemo} isExternal>
                     <Button colorScheme="blue" size="sm">
                       Live Demo
                     </Button>
                   </Link> */}
-                  </Stack>
+                    </Stack>
+                  </Box>
                 </Box>
-              </Box>
-            ))}
-          </SimpleGrid>
+              ))}
+            </SimpleGrid>
+          </MotionBox>
         </Box>
       </Box>
     </div>
