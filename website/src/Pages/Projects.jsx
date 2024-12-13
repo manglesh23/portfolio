@@ -17,6 +17,7 @@ import myIndia from "../assets/myIndia.jpeg";
 import website from "../assets/website.png";
 import chatbot from "../assets/chatbot.png";
 import payment from "../assets/payment.jpg";
+import Ecommerce from "../assets/E-commerce.jpg";
 
 const projects = [
   {
@@ -50,6 +51,14 @@ const projects = [
     description: "Portfolio Website",
     image: website,
     github: "https://github.com/manglesh23/portfolio.git",
+    liveDemo: "https://project-two-demo.com",
+  },
+  {
+    id: 5,
+    title: "E-Commerce Platform - shophere",
+    description: "E-Commerce Platform with payment system integration",
+    image: Ecommerce,
+    github: "https://github.com/manglesh23/shopHere.git",
     liveDemo: "https://project-two-demo.com",
   },
   // {
