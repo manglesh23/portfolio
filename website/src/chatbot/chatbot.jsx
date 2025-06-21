@@ -16,9 +16,11 @@ import { FaPaperPlane, FaSun, FaMoon } from "react-icons/fa";
 import intents from "../helper/intent";
 import profileImage from "../assets/pic.jpeg";
 import chatbot from "../assets/chatbot.png";
+import gemini from "../helper/gemini";
 
 const ChatBot = () => {
-  console.log("Intent:-", intents);
+  // console.log("Intent:-", intents);
+  const [loading, setLoading] = useState(false);
   const { toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue("gray.100", "gray.900");
   const buttonColor = useColorModeValue("teal.900", "blue.100");
@@ -89,31 +91,50 @@ const ChatBot = () => {
     }
   }, [messages]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
+    setLoading(true);
     if (!userInput.trim()) return;
+    try {
+      
+      // console.log("Response from gemini:-", callGemini);
 
-    const userMessage = userInput.toLowerCase().trim();
+      const userMessage = userInput.toLowerCase().trim();
+      
+      let historyPrompt= messages.map((msg)=>`${msg.sender==='user'?'user':'bot'}:${msg.text}`).join('\n');
+      let finalPrompt= `${historyPrompt}\n user :${userInput}\nGola`;
 
-    const newMessages = [...messages, { sender: "user", text: userInput }];
-    setMessages(newMessages);
+      const newMessages = [...messages, { sender: "user", text: userInput }];
+      setMessages(newMessages);
 
-    if (userMessage === "download cv") {
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: intents[userInput] },
-      ]);
-      setTimeout(() => {
-        callfunction("Downloading...");
-      }, 500);
-    } else {
-      let botResponse =
-        intents[userMessage] || "I'm not sure how to respond to that.";
+      let callGemini = await gemini(userInput);
+      // console.log("Final Prompt:-",finalPrompt);
 
-      setTimeout(() => {
-        setMessages((prev) => [...prev, { sender: "bot", text: botResponse }]);
-      }, 100);
+
+      if (userMessage === "download cv") {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: intents[userInput] },
+        ]);
+        setTimeout(() => {
+          callfunction("Downloading...");
+        }, 500);
+      } else {
+        let botResponse =
+          intents[userMessage] || "I'm not sure how to respond to that.";
+
+        setTimeout(() => {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: callGemini.data.result },
+          ]);
+        }, 100);
+      }
+      setUserInput("");
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
     }
-    setUserInput("");
   };
 
   return (
@@ -148,7 +169,7 @@ const ChatBot = () => {
           fontWeight="bold"
           display={isChatOpen ? "block" : "none"}
         >
-          GOLA 
+          GOLA
         </Text>
         <IconButton
           size="sm"
@@ -185,6 +206,20 @@ const ChatBot = () => {
               </Text>
             </Box>
           ))}
+          {loading && (
+            <Box
+              alignSelf="flex-start"
+              bg="blue.50"
+              px="4"
+              py="2"
+              borderRadius="lg"
+              maxW="80%"
+            >
+              <Text fontSize="sm" color="gray.500">
+                Gola is typing...
+              </Text>
+            </Box>
+          )}
         </VStack>
       )}
 
